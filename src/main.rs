@@ -1,7 +1,7 @@
 mod cli;
+mod log;
 
 use clap::Parser;
-use colored::Colorize;
 
 fn main() {
     let args = cli::Cli::parse();
