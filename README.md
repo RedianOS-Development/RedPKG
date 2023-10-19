@@ -3,7 +3,7 @@ Package manager for RedianOS.
 
 ## Contributing
 
-We welcome contributions from the community! If you'd like to contribute to **RedianOS**, DM @argon_dev at Discord
+We welcome contributions from the community! If you'd like to contribute to **RedianOS**, DM @rudy.in at Discord
 
 ## Spread the word!
 
