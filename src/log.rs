@@ -79,5 +79,5 @@ fn apply_color(string: String, mode: &LogMode) -> String {
         LogMode::Debug => string.bright_magenta(),
     };
 
-    return colored_string.to_string();
+    colored_string.to_string()
 }
