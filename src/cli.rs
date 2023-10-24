@@ -40,25 +40,30 @@ pub enum Operations {
 
 #[derive(Parser, Debug)]
 pub struct Install {
+    #[clap(index = 1, multiple = true)]
     pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Remove {
+    #[clap(index = 1, multiple = true)]
     pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Search {
+    #[clap(index = 1, multiple = true)]
     terms: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Query {
+    #[clap(index = 1, multiple = true)]
     terms: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct AddRepo {
+    #[clap(index = 1)]
     repo: String,
 }
