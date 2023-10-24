@@ -1,6 +1,6 @@
 [package]
 name = "redpkg"
-authors = ["Jackson Novak <ogloooglooagla@tutanota.com>"]
+authors = ["Jackson Novak <ogloooglooagla@tutanota.com>" , "Atiksh Sharma <atsharma623@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
 license = "GPL v3.0"
@@ -18,6 +18,6 @@ codegen-units = 1
 strip = true
 
 [dependencies]
-clap = { version = "4.4.6", features = ["derive"] }
+clap = {version = "4.4.6" , features = ["derive"]}
 cli_input = "0.1.2"
 colored = "2.0.4"
