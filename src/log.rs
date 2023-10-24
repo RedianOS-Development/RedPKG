@@ -8,6 +8,7 @@ pub enum LogMode {
     Warning,
     Note,
     Debug,
+    Success,
 }
 
 #[macro_export]
@@ -52,6 +53,13 @@ macro_rules! debug {
     });
 }
 
+#[macro_export]
+macro_rules! success {
+    ($($arg:tt)*) => ({
+        log_core_print(format!($($arg)*), LogMode::Success);
+    });
+}
+
 pub fn log_generic_print(msg: String) {
     println!("{} {}", " :".black().bold(), msg);
 }
@@ -63,6 +71,7 @@ pub fn log_core_print(msg: String, mode: LogMode) {
         LogMode::Warning => "!",
         LogMode::Note => "Note",
         LogMode::Debug => "Debug",
+        LogMode::Success => "✔",
     };
 
     let prefix = apply_color(prefix_text.to_string(), &mode);
@@ -77,6 +86,7 @@ fn apply_color(string: String, mode: &LogMode) -> String {
         LogMode::Warning => string.bright_yellow(),
         LogMode::Note => string.bright_yellow(),
         LogMode::Debug => string.bright_magenta(),
+        LogMode::Success => string.bright_cyan(),
     };
 
     colored_string.to_string()

@@ -8,6 +8,10 @@ use clap::Subcommand;
 pub struct Cli {
     #[clap(subcommand)]
     pub operation: Operations,
+    #[clap(short, long)]
+    pub force: bool,
+    #[clap(short, long)]
+    pub verbose: bool,
 }
 
 #[derive(Debug, Subcommand)]
