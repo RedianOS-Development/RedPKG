@@ -1,7 +1,7 @@
 mod cli;
 mod log;
 
-use clap::{App, Arg, Subcommand}; // Added missing import for Subcommand
+use clap::{App, Arg, SubCommand}; // Added missing import for Subcommand
 
 fn main() {
     let matches = App::new("RedPKG")
