@@ -1,43 +1,50 @@
 mod cli;
 mod log;
 
-use clap::{App, Arg, SubCommand}; // Added missing import for Subcommand
+use clap::Clap;
+
+#[derive(Clap)]
+#[clap(author, version, about, long_about)]
+/// RedPKG: RedianOS's Native Package Manager
+struct Opts {
+    #[clap(subcommand)]
+    operation: cli::Operations,
+}
 
 fn main() {
-    let matches = App::new("RedPKG")
-        .version("1.0")
-        .author("Oglo12 , Rudy ツ")
-        .about("RedianOS's Native Package Manager")
-        .subcommand(Subcommand::with_name("install")
-            .about("Install packages")
-            .arg(Arg::with_name("package")
-                .required(true)
-                .takes_value(true)))
-        .subcommand(Subcommand::with_name("remove")
-            .about("Uninstall packages")
-            .arg(Arg::with_name("package")
-                .required(true)
-                .takes_value(true)))
-        .subcommand(Subcommand::with_name("search")
-            .about("Search repositories for packages")
-            .arg(Arg::with_name("package")
-                .required(true)
-                .takes_value(true)))
-        .get_matches();
-
-    if let Some(matches) = matches.subcommand_matches("install") {
-        let package = matches.value_of("package").unwrap();
-        // Handle install command with the provided package name
-        println!("Installing package: {}", package);
-    } else if let Some(matches) = matches.subcommand_matches("remove") {
-        let package = matches.value_of("package").unwrap();
-        // Handle remove command with the provided package name
-        println!("Removing package: {}", package);
-    } else if let Some(matches) = matches.subcommand_matches("search") {
-        let package = matches.value_of("package").unwrap();
-        // Handle search command with the provided package name
-        println!("Searching for package: {}", package);
-    } else {
-        println!("Invalid command");
+    let opts: Opts = Opts::parse();
+    match opts.operation {
+        cli::Operations::Install(install) => {
+            // Handle install command with the provided package names
+            println!("Installing packages: {:?}", install.pkgs);
+        }
+        cli::Operations::Remove(remove) => {
+            // Handle remove command with the provided package names
+            println!("Removing packages: {:?}", remove.pkgs);
+        }
+        cli::Operations::Search(search) => {
+            // Handle search command with the provided search terms
+            println!("Searching packages: {:?}", search.terms);
+        }
+        cli::Operations::Query(query) => {
+            // Handle query command with the provided query terms
+            println!("Querying packages: {:?}", query.terms);
+        }
+        cli::Operations::List => {
+            // Handle list command
+            println!("Listing packages");
+        }
+        cli::Operations::Upgrade => {
+            // Handle upgrade command
+            println!("Upgrading system packages");
+        }
+        cli::Operations::Sync => {
+            // Handle sync command
+            println!("Syncing repositories");
+        }
+        cli::Operations::AddRepo(add_repo) => {
+            // Handle add repo command with the provided repository
+            println!("Adding repository: {}", add_repo.repo);
+        }
     }
 }
