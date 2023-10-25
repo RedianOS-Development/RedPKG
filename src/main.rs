@@ -8,7 +8,7 @@ use clap::Clap;
 /// RedPKG: RedianOS's Native Package Manager
 struct Opts {
     #[clap(subcommand)]
-    operation: cli::Operations,
+    pub operation: cli::Operations,
 }
 
 fn main() {
@@ -48,3 +48,4 @@ fn main() {
         }
     }
 }
+
