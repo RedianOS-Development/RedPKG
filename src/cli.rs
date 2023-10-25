@@ -1,5 +1,5 @@
 use clap::Parser;
-use clap::Subcommand;
+use clap::SubCommand;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -10,7 +10,7 @@ pub struct Cli {
     pub operation: Operations,
 }
 
-#[derive(Debug, Subcommand)]
+#[derive(Debug, SubCommand)]
 /// What shall RedPKG do for you?
 pub enum Operations {
     /// Install packages
@@ -40,25 +40,25 @@ pub enum Operations {
 
 #[derive(Parser, Debug)]
 pub struct Install {
-    #[clap(index = 1, multiple = true)]
+    #[clap(index = 1)] // Removed `multiple = true`
     pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Remove {
-    #[clap(index = 1, multiple = true)]
+    #[clap(index = 1)] // Removed `multiple = true`
     pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Search {
-    #[clap(index = 1, multiple = true)]
+    #[clap(index = 1)] // Removed `multiple = true`
     terms: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Query {
-    #[clap(index = 1, multiple = true)]
+    #[clap(index = 1)] // Removed `multiple = true`
     terms: Vec<String>,
 }
 
