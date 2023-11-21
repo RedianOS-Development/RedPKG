@@ -1,13 +1,16 @@
-use clap::Clap;
+use clap::Parser;
+use clap::Subcommand;
 
-#[derive(Clap)]
-/// RedPKG: RedianOS's Native Package Manager
+#[derive(Parser)]
+#[command(author, version, about, long_about = None)]
+#[command(propagate_version = true)]
+/// RedPKG : RedianOS's Native Package Manager
 pub struct Cli {
     #[clap(subcommand)]
     pub operation: Operations,
 }
 
-#[derive(Debug, Clap)]
+#[derive(Debug, Subcommand)]
 /// What shall RedPKG do for you?
 pub enum Operations {
     /// Install packages
@@ -35,33 +38,27 @@ pub enum Operations {
     AddRepo(AddRepo),
 }
 
-#[derive(Debug, Clap)]
+#[derive(Parser, Debug)]
 pub struct Install {
-    #[clap(index = 1)]
-    pub pkgs: Vec<String>,
+    pkgs: Vec<String>,
 }
 
-#[derive(Debug, Clap)]
+#[derive(Parser, Debug)]
 pub struct Remove {
-    #[clap(index = 1)]
-    pub pkgs: Vec<String>,
+    pkgs: Vec<String>,
 }
 
-#[derive(Debug, Clap)]
+#[derive(Parser, Debug)]
 pub struct Search {
-    #[clap(index = 1)]
-    pub terms: Vec<String>,
+    terms: Vec<String>,
 }
 
-#[derive(Debug, Clap)]
+#[derive(Parser, Debug)]
 pub struct Query {
-    #[clap(index = 1)]
-    pub terms: Vec<String>,
+    terms: Vec<String>,
 }
 
-#[derive(Debug, Clap)]
+#[derive(Parser, Debug)]
 pub struct AddRepo {
-    #[clap(index = 1)]
-    pub repo: String,
+    repo: String,
 }
-
