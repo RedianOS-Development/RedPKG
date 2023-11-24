@@ -1,4 +1,4 @@
-![RedianOS](https://media.discordapp.net/attachments/1115201322233372745/1136309959332728862/image.png?width=1451&height=258)
+![RedianOS](https://media.discordapp.net/attachments/1115201322233372745/1136309959332728862/image.png?width=1451&height=258) (Discord. Fuck you)
 ## RedPKG
 Package manager for RedianOS.
 
