@@ -1,6 +1,6 @@
 [package]
 name = "redpkg"
-authors = ["Jackson Novak <ogloooglooagla@tutanota.com>" , "Atiksh Sharma <atsharma623@gmail.com>"]
+authors = ["Brian "firedcat" Anderson <catfired@proton.me>" , "Atiksh Sharma <atsharma623@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
 license = "GPL v3.0"
