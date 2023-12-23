@@ -1,9 +1,11 @@
+// cli.rs
+
 use clap::Parser;
 use clap::Subcommand;
 
 #[derive(Parser)]
-#[command(author, version, about, long_about = None)]
-#[command(propagate_version = true)]
+#[clap(author, version, about, long_about = None)]
+#[clap(propagate_version = true)]
 /// RedPKG : RedianOS's Native Package Manager
 pub struct Cli {
     #[clap(subcommand)]
@@ -40,25 +42,30 @@ pub enum Operations {
 
 #[derive(Parser, Debug)]
 pub struct Install {
-    pkgs: Vec<String>,
+    #[clap(name = "packages")]
+    pub pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Remove {
-    pkgs: Vec<String>,
+    #[clap(name = "packages")]
+    pub pkgs: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Search {
-    terms: Vec<String>,
+    #[clap(name = "search-terms")]
+    pub terms: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct Query {
-    terms: Vec<String>,
+    #[clap(name = "query-terms")]
+    pub terms: Vec<String>,
 }
 
 #[derive(Parser, Debug)]
 pub struct AddRepo {
-    repo: String,
+    #[clap(name = "repository")]
+    pub repo: String,
 }
